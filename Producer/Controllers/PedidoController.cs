@@ -22,7 +22,7 @@ namespace Producer.Controller
         [HttpPost]
         public async Task<IActionResult> Post()
         {
-            var nomeFila = _configuration.GetSection("MassTransit").GetValue<string>("QueueName") ?? string.Empty;
+            var nomeFila = _configuration.GetSection("MassTransitAzure").GetValue<string>("NomeFila") ?? string.Empty;
 
             var endpoint = await _bus.GetSendEndpoint(new Uri($"queue:{nomeFila}"));
 
