@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core;
+using MailSender;
 using MassTransit;
 
 namespace Consumer.Events
@@ -13,6 +14,8 @@ namespace Consumer.Events
         public Task Consume(ConsumeContext<Pedido> context)
         {
             Console.WriteLine(context.Message);
+
+            Sender.Main();
             return Task.CompletedTask;
         }
     }
